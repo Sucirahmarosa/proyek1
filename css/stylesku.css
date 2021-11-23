@@ -1,0 +1,83 @@
+/* Index.PHP */
+.nav-icon i {
+  color: white;
+}
+
+.nav-icon {
+  display: inline;
+}
+
+@media screen and (max-width: 755px) {
+  .carousel-inner {
+    height: auto;
+  }
+}
+
+@media (min-width: 800px) {
+  .slideku {
+    height: 300px;
+    width: auto;
+    position: relative;
+  }
+}
+
+/* Akhir Index.Php */
+
+/* Login.php */
+.body-img {
+  background-image: url("../assets/img/bg2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  /* background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+}
+
+.login-method {
+  padding-top: 10px;
+  text-align: center;
+  color: black;
+}
+
+.log-sub {
+  height: auto;
+  background-color: greenyellow;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.password {
+  padding-top: 20px;
+}
+
+.kotak {
+  width: 100%;
+}
+
+.login {
+  width: 65%;
+  padding-top: 15%;
+}
+
+.login h1 {
+  color: white;
+}
+
+.bg-login {
+  width: 300px;
+  background-color: rgba(36, 26, 26, 0.603);
+  background-size: cover;
+}
+
+@media screen and (max-width: 850px) {
+  .login {
+    margin-top: 15%;
+  }
+}
+/* 
+.te p {
+  color: white;
+} */
