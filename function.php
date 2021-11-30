@@ -44,12 +44,40 @@ function Registrasi ($data){
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     //tambahkan ke database
-    mysqli_query($conn, "INSERT INTO user VALUES ('','$user', '$password', 'biasa')");
+    mysqli_query($conn, "INSERT INTO user VALUES (null,'$user', '$password', 'biasa')");
 
     return mysqli_affected_rows($conn);
 }
 
-// Admin login
+//tambah data 
+function tambah($data){
+    global $conn;
+
+    //ambil data
+    $nama = htmlspecialchars($data["nama_barang"]); 
+    $harga  = htmlspecialchars($data["harga_barang"]);
+    $jumlah =htmlspecialchars($data["jumlah_barang"]);
+    $foto =htmlspecialchars($data["foto_barang"]);
+    $deskripsi =htmlspecialchars($data["deskripsi_barang"]);
+
+    //query insert
+    $query = "INSERT INTO produk
+              VALUES
+              (null , '$nama', '$harga', '$jumlah', '$foto', '$deskripsi')";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+
+//hapus data
+function hapus ($id) {
+    global $conn;
+    $query = "DELETE FROM produk WHERE id_barang = $id";
+    mysqli_query($conn, $query) or die (mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+}
 
 
 ?>

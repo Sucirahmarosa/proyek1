@@ -1,7 +1,29 @@
 <?php
-include_once '../function.php';
+require '../function.php';
 
 $result = query("SELECT *FROM produk");
+
+
+
+if(isset ($_POST["submit"])){
+
+  if(tambah($_POST) > 0){  
+      echo "<script> alert('Data berhasil ditambahkan');
+        document.location.href = 'product.php';
+      </script>";
+  }else{
+      echo"<script>alert('Data gagal ditambahkan');
+      document.location.href = 'product.php';
+      </script>";
+      
+  }
+
+//cek tambah berhasil tidak 
+
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -102,7 +124,7 @@ $result = query("SELECT *FROM produk");
                                     </div>
                                     <div class="form-group">
                                         <label for="harga_barang" class="form-label">Harga Barang</label>
-                                        <input type="numbers" name="harga" id="nama_barang" for="harga_barang" class="form-control" required>
+                                        <input type="numbers" name="harga_barang" id="harga_barang" for="harga_barang" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="jumlah_barang" class="form-label">Jumlah Barang</label>
@@ -119,7 +141,7 @@ $result = query("SELECT *FROM produk");
                                 </div>
                                 <div class="modal-footer">
                                     <button type="reset" class="btn btn-danger">Reset</button>
-                                    <input type="submit" name="tambah" class="btn btn-success" value="simpan">
+                                    <input type="submit" name="submit" class="btn btn-success" value="tambah">
                                 </div>
                             </form>  
                         </div>
@@ -161,7 +183,7 @@ $result = query("SELECT *FROM produk");
                                 </td>
                                 <td>
                                     <a href="ubah.php" class="btn btn-success">Ubah</a>
-                                    <a href="hapus.php" class="btn btn-danger">Hapus</a>
+                                    <a href="hapus.php?id=<?php echo $pdk["id_barang"]; ?>" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                             <?php $i++;?>
@@ -195,5 +217,4 @@ $result = query("SELECT *FROM produk");
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
 </body>
-
 </html>
