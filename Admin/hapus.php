@@ -4,7 +4,7 @@ require '../function.php';
 $conn = mysqli_connect('localhost', 'root', '', 'tokokita');
 
 $id = $_GET["id"];
-var_dump($id);
+
 
 if( hapus($id) > 0){
       echo "<script> alert('Data berhasil dihapus');

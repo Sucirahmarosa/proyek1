@@ -9,11 +9,11 @@ if(isset ($_POST["submit"])){
 
   if(tambah($_POST) > 0){  
       echo "<script> alert('Data berhasil ditambahkan');
-        document.location.href = 'product.php';
+        document.location.href = 'produk.php';
       </script>";
   }else{
       echo"<script>alert('Data gagal ditambahkan');
-      document.location.href = 'product.php';
+      document.location.href = 'produk.php';
       </script>";
       
   }
@@ -108,88 +108,132 @@ if(isset ($_POST["submit"])){
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Tambah Data
                     </button>
-                    <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Tambah Barang</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <table class="table table-dark table-bordered mt-2">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Barang</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
+                                    <th>Foto</th>
+                                    <th>Deskripsi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach($result as $pdk): ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $i; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pdk["nama_barang"]; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pdk["harga_barang"]; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pdk["jumlah_barang"]; ?>
+                                    </td>
+                                    <td><img src="img/" <?php echo $pdk["foto_barang"]; ?>></td>
+                                    <td>
+                                        <?php echo $pdk["deskripsi_barang"]; ?>
+                                    </td>
+                                    <td>
+                                        <a href="produk.php" class="btn btn-success" data-bs-toggle="modal" data-target="#ubahdata <?php echo $pdk["id_barang"]; ?>"
+                                        >Ubah</a>
+                                        <a href="hapus.php?id=<?php echo $pdk["id_barang"]; ?>" class="btn btn-danger">Hapus</a>
+                                    </td>
+                                </tr>
+                                <?php $i++;?>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                </div>
+
+                 <!-- Modal tambah data -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Tambah Barang</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="" method="post">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="nama_barang" class="form-label">Nama Barang</label>
+                                            <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="harga_barang" class="form-label">Harga Barang</label>
+                                            <input type="numbers" name="harga_barang" id="harga_barang" for="harga_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="jumlah_barang" class="form-label">Jumlah Barang</label>
+                                            <input type="number" name="jumlah_barang" id="jumlah_barang" for="jumlah_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="foto_barang" class="form-label">Foto Barang</label>
+                                            <input type="file" name="foto_barang" id="foto_barang" for="foto_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="deskripsi_barang" class="form-label">Deskripsi Barang</label>
+                                            <input type="teks" name="deskripsi_barang" id="deskripsi_barang" for="deskripsi_barang" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                        <input type="submit" name="submit" class="btn btn-success" value="tambah">
+                                    </div>
+                                </form>  
                             </div>
-                            <form action="" method="post">
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="nama_barang" class="form-label">Nama Barang</label>
-                                        <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="harga_barang" class="form-label">Harga Barang</label>
-                                        <input type="numbers" name="harga_barang" id="harga_barang" for="harga_barang" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jumlah_barang" class="form-label">Jumlah Barang</label>
-                                        <input type="number" name="jumlah_barang" id="jumlah_barang" for="jumlah_barang" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="foto_barang" class="form-label">Foto Barang</label>
-                                        <input type="file" name="foto_barang" id="foto_barang" for="foto_barang" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="deskripsi_barang" class="form-label">Deskripsi Barang</label>
-                                        <input type="teks" name="deskripsi_barang" id="deskripsi_barang" for="deskripsi_barang" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="reset" class="btn btn-danger">Reset</button>
-                                    <input type="submit" name="submit" class="btn btn-success" value="tambah">
-                                </div>
-                            </form>  
                         </div>
                     </div>
-                </div>
-                <!-- end modal -->
-                    <table class="table table-dark table-bordered mt-2">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Barang</th>
-                                <th>Harga</th>
-                                <th>Jumlah</th>
-                                <th>Foto</th>
-                                <th>Deskripsi</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
+                    <!-- end modal -->
 
-                        <tbody>
-                            <?php $i = 1; ?>
-                            <?php foreach($result as $pdk): ?>
-                            <tr>
-                                <td>
-                                    <?php echo $i; ?>
-                                </td>
-                                <td>
-                                    <?php echo $pdk["nama_barang"]; ?>
-                                </td>
-                                <td>
-                                    <?php echo $pdk["harga_barang"]; ?>
-                                </td>
-                                <td>
-                                    <?php echo $pdk["jumlah_barang"]; ?>
-                                </td>
-                                <td><img src="img/" <?php echo $pdk["foto_barang"]; ?>></td>
-                                <td>
-                                    <?php echo $pdk["deskripsi_barang"]; ?>
-                                </td>
-                                <td>
-                                    <a href="ubah.php" class="btn btn-success">Ubah</a>
-                                    <a href="hapus.php?id=<?php echo $pdk["id_barang"]; ?>" class="btn btn-danger">Hapus</a>
-                                </td>
-                            </tr>
-                            <?php $i++;?>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                       <!-- Modal edit data -->
+                    <div class="modal fade" id="ubahdata<?php echo $pdk["id_barang"]; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Edit Barang</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="../function.php" method="post">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="nama_barang" class="form-label">Nama Barang</label>
+                                            <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="harga_barang" class="form-label">Harga Barang</label>
+                                            <input type="numbers" name="harga_barang" id="harga_barang" for="harga_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="jumlah_barang" class="form-label">Jumlah Barang</label>
+                                            <input type="number" name="jumlah_barang" id="jumlah_barang" for="jumlah_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="foto_barang" class="form-label">Foto Barang</label>
+                                            <input type="file" name="foto_barang" id="foto_barang" for="foto_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="deskripsi_barang" class="form-label">Deskripsi Barang</label>
+                                            <input type="teks" name="deskripsi_barang" id="deskripsi_barang" for="deskripsi_barang" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                        <input type="submit" name="edit" class="btn btn-success" value="edit">
+                                    </div>
+                                </form>  
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end modal -->
             </main>
 
             <!-- Footer -->
@@ -215,6 +259,8 @@ if(isset ($_POST["submit"])){
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+    <scrip src="js/datatables-simple-demo.js"></script>
+
+
 </body>
 </html>
