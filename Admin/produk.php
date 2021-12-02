@@ -137,7 +137,7 @@ if(isset ($_POST["submit"])){
                                     <td>
                                         <?php echo $pdk["jumlah_barang"]; ?>
                                     </td>
-                                    <td><img src="img/" <?php echo $pdk["foto_barang"]; ?>></td>
+                                    <td><img src="img/<?php echo $pdk["foto_barang"]; ?>"></td>
                                     <td>
                                         <?php echo $pdk["deskripsi_barang"]; ?>
                                     </td>
