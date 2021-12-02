@@ -137,12 +137,12 @@ if(isset ($_POST["submit"])){
                                     <td>
                                         <?php echo $pdk["jumlah_barang"]; ?>
                                     </td>
-                                    <td><img src="img/<?php echo $pdk["foto_barang"]; ?>"></td>
+                                    <td><img src="img/<?php echo $pdk["foto_barang"]; ?>" width="130px"></td>
                                     <td>
                                         <?php echo $pdk["deskripsi_barang"]; ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editdata"
+                                        <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editdata"ubah.php?id=<?php echo $pdk["id_barang"];?>
                                         >Ubah</a>
                                         <a href="hapus.php?id=<?php echo $pdk["id_barang"]; ?>" class="btn btn-danger">Hapus</a>
                                     </td>
@@ -206,7 +206,7 @@ if(isset ($_POST["submit"])){
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label for="nama_barang" class="form-label">Nama Barang</label>
-                                            <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" required>
+                                            <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" value="<?php echo $pdk["nama_barang"];?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="harga_barang" class="form-label">Harga Barang</label>
