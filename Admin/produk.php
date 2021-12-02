@@ -142,7 +142,7 @@ if(isset ($_POST["submit"])){
                                         <?php echo $pdk["deskripsi_barang"]; ?>
                                     </td>
                                     <td>
-                                        <a href="produk.php" class="btn btn-success" data-bs-toggle="modal" data-target="#ubahdata <?php echo $pdk["id_barang"]; ?>"
+                                        <a href="#editdata<?php echo $pdk["id_barang"]; ?>" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editdata"
                                         >Ubah</a>
                                         <a href="hapus.php?id=<?php echo $pdk["id_barang"]; ?>" class="btn btn-danger">Hapus</a>
                                     </td>
@@ -192,10 +192,10 @@ if(isset ($_POST["submit"])){
                             </div>
                         </div>
                     </div>
-                    <!-- end modal -->
+                 <!-- end modal -->
 
                        <!-- Modal edit data -->
-                    <div class="modal fade" id="ubahdata<?php echo $pdk["id_barang"]; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="editdata <?php echo $pdk["id_barang"]; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
