@@ -142,7 +142,7 @@ if(isset ($_POST["submit"])){
                                         <?php echo $pdk["deskripsi_barang"]; ?>
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editdata"ubah.php?id=<?php echo $pdk["id_barang"];?>
+                                        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editdata<?php echo $pdk['id_barang']; ?>"
                                         >Ubah</a>
                                         <a href="hapus.php?id=<?php echo $pdk["id_barang"]; ?>" class="btn btn-danger">Hapus</a>
                                     </td>
@@ -163,6 +163,9 @@ if(isset ($_POST["submit"])){
                                 </div>
                                 <form action="" method="post">
                                     <div class="modal-body">
+                                        <div class="form-group">
+                                            <input type="hidden" name="id" id="id_barang" for="id_barang" class="form-control"  required>
+                                        </div>
                                         <div class="form-group">
                                             <label for="nama_barang" class="form-label">Nama Barang</label>
                                             <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" required>
@@ -195,7 +198,8 @@ if(isset ($_POST["submit"])){
                  <!-- end modal -->
 
                        <!-- Modal edit data -->
-                    <div class="modal fade" id="editdata" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <?php foreach($result as $pdk): ?>
+                    <div class="modal fade" id="editdata<?php echo $pdk['id_barang']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -205,8 +209,11 @@ if(isset ($_POST["submit"])){
                                 <form action="" method="post">
                                     <div class="modal-body">
                                         <div class="form-group">
+                                             <input type="hidden" name="id_barang" id="id_barang" for="id_barang" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="nama_barang" class="form-label">Nama Barang</label>
-                                            <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" value="<?php echo $pdk["nama_barang"];?>" required>
+                                            <input type="text" name="nama_barang" id="nama_barang" for="nama_barang" class="form-control" value="<?php echo $pdk['nama_barang'];?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="harga_barang" class="form-label">Harga Barang</label>
@@ -233,6 +240,7 @@ if(isset ($_POST["submit"])){
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                     <!-- end modal -->
             </main>
 
@@ -259,8 +267,7 @@ if(isset ($_POST["submit"])){
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <scrip src="js/datatables-simple-demo.js"></script>
-
+    <script src="js/datatables-simple-demo.js"></script>
 
 </body>
 </html>
