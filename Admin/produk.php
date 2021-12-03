@@ -4,7 +4,7 @@ require '../function.php';
 $result = query("SELECT *FROM produk");
 
 
-
+//Tambah Data
 if(isset ($_POST["submit"])){
 
   if(tambah($_POST) > 0){  
@@ -18,10 +18,19 @@ if(isset ($_POST["submit"])){
       
   }
 
-//cek tambah berhasil tidak 
-
 }
 
+if(isset($_POST["edit"])){
+    if( ubah($_POST) > 0){
+        echo "<script> alert('Data berhasil diperbarui');
+        document.location.href = 'produk.php';
+      </script>";
+  }else{
+      echo"<script>alert('Data gagal diperbarui');
+      document.location.href = 'produk.php';
+      </script>";
+        }
+    }
 
 
 
@@ -209,7 +218,7 @@ if(isset ($_POST["submit"])){
                                 <form action="" method="post">
                                     <div class="modal-body">
                                         <div class="form-group">
-                                             <input type="hidden" name="id_barang" id="id_barang" for="id_barang" class="form-control" required>
+                                             <input type="hidden" name="id" id="id_barang" for="id_barang" class="form-control" value="<?php echo $pdk['id_barang']?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="nama_barang" class="form-label">Nama Barang</label>
@@ -217,19 +226,19 @@ if(isset ($_POST["submit"])){
                                         </div>
                                         <div class="form-group">
                                             <label for="harga_barang" class="form-label">Harga Barang</label>
-                                            <input type="numbers" name="harga_barang" id="harga_barang" for="harga_barang" class="form-control" required>
+                                            <input type="numbers" name="harga_barang" id="harga_barang" for="harga_barang" class="form-control" value="<?php echo $pdk['harga_barang'];?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="jumlah_barang" class="form-label">Jumlah Barang</label>
-                                            <input type="number" name="jumlah_barang" id="jumlah_barang" for="jumlah_barang" class="form-control" required>
+                                            <input type="number" name="jumlah_barang" id="jumlah_barang" for="jumlah_barang" value="<?php echo $pdk['jumlah_barang'];?>" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="foto_barang" class="form-label">Foto Barang</label>
-                                            <input type="file" name="foto_barang" id="foto_barang" for="foto_barang" class="form-control" required>
+                                            <input type="file" name="foto_barang" id="foto_barang" for="foto_barang" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label for="deskripsi_barang" class="form-label">Deskripsi Barang</label>
-                                            <input type="teks" name="deskripsi_barang" id="deskripsi_barang" for="deskripsi_barang" class="form-control" required>
+                                            <input type="teks" name="deskripsi_barang" id="deskripsi_barang" for="deskripsi_barang" class="form-control" value="<?php echo $pdk['deskripsi_barang'];?>" required>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

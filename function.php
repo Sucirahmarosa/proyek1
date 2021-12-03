@@ -80,4 +80,30 @@ function hapus ($id) {
 }
 
 
+
+//update data 
+function ubah ($data){
+    global $conn;
+    
+    //ambil data
+    $id = $data["id"];
+    $nama = htmlspecialchars($data["nama_barang"]); 
+    $harga  = htmlspecialchars($data["harga_barang"]);
+    $jumlah =htmlspecialchars($data["jumlah_barang"]);
+    $foto =htmlspecialchars($data["foto_barang"]);
+    $deskripsi =htmlspecialchars($data["deskripsi_barang"]);
+
+
+    $query = "UPDATE produk SET
+                nama_barang = '$nama', 
+                harga_barang = '$harga',
+                jumlah_barang = '$jumlah',
+                foto_barang = '$foto',
+                deskripsi_barang = '$deskripsi'
+                WHERE id_barang = '$id'";
+     mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
 ?>
