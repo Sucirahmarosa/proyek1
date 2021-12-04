@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>Halaman Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
@@ -75,11 +75,57 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <div>
-                      <center><h1>Selamat Datang Di Halaman Admin</h1></center>
-                    </div>
-                    <center><img src="./assets/img/tokokita.jpeg" alt="" class=" rounded-circle" 
-                        style="width:400px;"></center>
+                     <div class="container-fluid px-4">
+                    <h1>Produk</h1>
+                   <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Tambah Data
+                    </button>
+                        <table class="table table-dark table-bordered mt-2">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Penjual</th>
+                                    <th>Alamat Penjual</th>
+                                    <th>Barang</th>
+                                    <th>jumlah</th>
+                                    <th></th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach($result as $pdk): ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $i; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pdk["nama_barang"]; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pdk["harga_barang"]; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pdk["jumlah_barang"]; ?>
+                                    </td>
+                                    <td><img src="img/<?php echo $pdk["foto_barang"]; ?>" width="130px"></td>
+                                    <td>
+                                        <?php echo $pdk["deskripsi_barang"]; ?>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editdata<?php echo $pdk['id_barang']; ?>"
+                                        >Ubah</a>
+                                        <a href="hapus.php?id=<?php echo $pdk["id_barang"]; ?>" class="btn btn-danger">Hapus</a>
+                                    </td>
+                                </tr>
+                                <?php $i++;?>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                </div>
+
                 </div>
             </main>
 

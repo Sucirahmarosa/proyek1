@@ -57,7 +57,13 @@ function tambah($data){
     $nama = htmlspecialchars($data["nama_barang"]); 
     $harga  = htmlspecialchars($data["harga_barang"]);
     $jumlah =htmlspecialchars($data["jumlah_barang"]);
-    $foto =htmlspecialchars($data["foto_barang"]);
+   
+    //upload gambar
+    $foto = upload();
+    if(!$foto){
+        return false;
+    }
+
     $deskripsi =htmlspecialchars($data["deskripsi_barang"]);
 
     //query insert
@@ -68,6 +74,45 @@ function tambah($data){
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
+}
+
+function upload(){
+    $namaFile = $_FILES['foto_barang']['name'];
+    $ukuranFile = $_FILES['foto_barang']['size'];
+    $error = $_FILES['foto_barang']['error'];
+    $tmpName = $_FILES ['foto_barang']['tmp_name'];
+
+    //cek apakah ada gambar atau tidak 
+    if($error === 4 ){
+        echo "<script>
+            alert ('Mohon inputkan gambar terlebih dahulu');
+        </script>"; 
+        return false;
+    }
+
+    //cek apakah file yang di upload adalah gambar
+    $ekstensiFotoValid = ['jpg','jpeg','png'];
+    $ekstensiFoto = explode('.', $namaFile);
+    $ekstensiFoto = strtolower(end($ekstensiFoto));
+
+    if(!in_array($ekstensiFoto, $ekstensiFotoValid )){
+        echo "<script>
+            alert ('Maaf harap masukan file gambar');
+        </script>"; 
+        return false;   
+    }
+
+    //cek ukuran file
+    if($ukuranFile > 3000000){
+         echo "<script>
+            alert ('Ukuran gambar terlalu besar');
+        </script>"; 
+        return false;
+    }
+
+    //lolos pengecekan dan file di upload
+    move_uploaded_file($tmpName, 'Admin/img/'. $namaFile);
+    return $namaFile;
 }
 
 
