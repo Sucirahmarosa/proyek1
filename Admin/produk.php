@@ -1,7 +1,7 @@
 <?php
 require '../function.php';
 
-$result = query("SELECT *FROM produk");
+
 
 
 //Tambah Data
@@ -20,6 +20,7 @@ if(isset ($_POST["submit"])){
 
 }
 
+//edit data
 if(isset($_POST["edit"])){
     if( ubah($_POST) > 0){
         echo "<script> alert('Data berhasil diperbarui');
@@ -32,7 +33,17 @@ if(isset($_POST["edit"])){
         }
     }
 
+//pagination
+$perPage = 1;
+$page = isset($_GET["halaman"]) ? (int) $_GET["halaman"] : 1;
+$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
+$produk = query("SELECT *FROM produk LIMIT $start, $perPage");
+
+$result = mysqli_query($conn,"SELECT *FROM produk");
+$total = mysqli_num_rows($result);
+
+$pages = ceil($total/$perPage);
 
 ?>
 <!DOCTYPE html>
@@ -132,7 +143,7 @@ if(isset($_POST["edit"])){
 
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach($result as $pdk): ?>
+                                <?php foreach($produk as $pdk): ?>
                                 <tr>
                                     <td>
                                         <?php echo $i; ?>
@@ -160,6 +171,11 @@ if(isset($_POST["edit"])){
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div class="pagination">
+                            <?php for($i=1; $i<=$pages; $i++){?>
+                                <a href="?halaman<?= $i?>"><?= $i?></a>
+                             <?php }?> 
+                        </div>
                 </div>
 
                  <!-- Modal tambah data -->
@@ -207,7 +223,7 @@ if(isset($_POST["edit"])){
                  <!-- end modal -->
 
                        <!-- Modal edit data -->
-                    <?php foreach($result as $pdk): ?>
+                    <?php foreach($produk as $pdk): ?>
                     <div class="modal fade" id="editdata<?php echo $pdk['id_barang']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -215,7 +231,8 @@ if(isset($_POST["edit"])){
                                     <h5 class="modal-title" id="staticBackdropLabel">Edit Barang</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="" method="post">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="fotolama" value="<?php echo $pdk['foto_barang']?>">
                                     <div class="modal-body">
                                         <div class="form-group">
                                              <input type="hidden" name="id" id="id_barang" for="id_barang" class="form-control" value="<?php echo $pdk['id_barang']?>" required>
@@ -234,6 +251,8 @@ if(isset($_POST["edit"])){
                                         </div>
                                         <div class="form-group">
                                             <label for="foto_barang" class="form-label">Foto Barang</label>
+                                            <br>
+                                            <img src="img/<?php echo $pdk['foto_barang']; ?>" width="120px">
                                             <input type="file" name="foto_barang" id="foto_barang" for="foto_barang" class="form-control">
                                         </div>
                                         <div class="form-group">

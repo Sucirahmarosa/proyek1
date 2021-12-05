@@ -111,8 +111,13 @@ function upload(){
     }
 
     //lolos pengecekan dan file di upload
-    move_uploaded_file($tmpName, 'Admin/img/'. $namaFile);
-    return $namaFile;
+    //jika ada file yg nama sama maka akan dirandom
+    $namaFileBaru =uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiFoto;
+
+    move_uploaded_file($tmpName, 'img/'. $namaFileBaru);
+    return $namaFileBaru;
 }
 
 
@@ -135,8 +140,18 @@ function ubah ($data){
     $nama = htmlspecialchars($data["nama_barang"]); 
     $harga  = htmlspecialchars($data["harga_barang"]);
     $jumlah =htmlspecialchars($data["jumlah_barang"]);
-    $foto =htmlspecialchars($data["foto_barang"]);
+    $fotolama = htmlspecialchars($data["fotolama"]);
+    //cek user ganti gambar ga
+    if($_FILES["foto_barang"]['error'] === 4){
+        $foto = $fotolama;
+    }else{
+        $foto = upload();
+    }
+
     $deskripsi =htmlspecialchars($data["deskripsi_barang"]);
+   
+
+    
 
 
     $query = "UPDATE produk SET
