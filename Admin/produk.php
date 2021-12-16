@@ -34,16 +34,19 @@ if(isset($_POST["edit"])){
     }
 
 //pagination
-$perPage = 1;
-$page = isset($_GET["halaman"]) ? (int) $_GET["halaman"] : 1;
-$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
-
-$produk = query("SELECT *FROM produk LIMIT $start, $perPage");
+$batas = 2;
+$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+$halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;	
+$previous = $halaman - 1;
+$next = $halaman + 1;
 
 $result = mysqli_query($conn,"SELECT *FROM produk");
-$total = mysqli_num_rows($result);
+$jumlah_data = mysqli_num_rows($result);
+$total_halaman = ceil($jumlah_data / $batas);
 
-$pages = ceil($total/$perPage);
+$produk = query("SELECT *FROM produk LIMIT $halaman_awal, $batas");
+$nomor = $halaman_awal+1;
+
 
 ?>
 <!DOCTYPE html>
@@ -171,11 +174,19 @@ $pages = ceil($total/$perPage);
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <div class="pagination">
-                            <?php for($i=1; $i<=$pages; $i++){?>
-                                <a href="?halaman<?= $i?>"><?= $i?></a>
-                             <?php }?> 
-                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item"><a class="page-link" <?php if($halaman > 1){echo "href= '?halaman = $previous'";}?>>Previous</a></li>
+                                <?php 
+                                for($x=1; $x<=$total_halaman; $x++){
+                                    ?> 
+                                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                                	<?php
+                                        }
+                                    ?>				
+                                <li class="page-item"><a class="page-link"<?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a></li>
+                            </ul>
+                        </nav>
                 </div>
 
                  <!-- Modal tambah data -->
