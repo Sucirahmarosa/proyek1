@@ -41,7 +41,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -63,7 +63,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Penjual
                         </a>
-                        <a class="nav-link" href="logout.php?=logout">
+                        <a class="nav-link" href="../logout.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Logout
                         </a>
