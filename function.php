@@ -166,4 +166,59 @@ function ubah ($data){
     return mysqli_affected_rows($conn);
 }
 
+
+
+//FUNCTION TAMBAH DATA PENJUAL
+function tambahPenjual($data){
+    global $conn;
+
+    //ambil data
+    $nama = htmlspecialchars($data["nama_penjual"]); 
+    $alamat  = htmlspecialchars($data["alamat_penjual"]);
+    $nomer =htmlspecialchars($data["no_penjual"]);
+    $deskripsi =htmlspecialchars($data["deskripsi_penjual"]);
+   
+    //query insert
+    $query = "INSERT INTO penjual
+              VALUES
+              (null , '$nama', '$alamat', '$nomer', '$deskripsi')";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+//UBAH DATA PENJUAL
+function ubahPenjual ($data){
+    global $conn;
+    
+    //ambil data
+    $id = $data["id"];
+    $nama = htmlspecialchars($data["nama_penjual"]); 
+    $alamat  = htmlspecialchars($data["alamat_penjual"]);
+    $nomer =htmlspecialchars($data["no_penjual"]);
+    $deskripsi = htmlspecialchars($data["deskripsi_penjual"]);   
+
+    
+
+
+    $query = "UPDATE penjual SET
+                nama_penjual = '$nama', 
+                alamat_penjual = '$alamat',
+                no_penjual = '$nomer',
+                deskripsi_penjual = '$deskripsi'
+                WHERE id = '$id'";
+     mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+//HAPUS PENJUAL
+function hapusPenjual ($id) {
+    global $conn;
+    $query = "DELETE FROM penjual WHERE id = $id";
+    mysqli_query($conn, $query) or die (mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+}
+
 ?>
