@@ -78,7 +78,7 @@ require 'function.php';
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-primary" type="submit">Search</button>
-                    <button class="btn btn-primary ms-2" type="subit">logout</button>
+                    <a href="logout.php" class="btn btn-primary ms-2" type="submit">Logout</a>
                 </form> 
             </div>
         </div>
