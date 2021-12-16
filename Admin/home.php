@@ -12,6 +12,8 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
         crossorigin="anonymous"></script>
+    <!-- Css -->
+    <link rel="stylesheet" href="css/testku.css">
 </head>
 
 <body class="sb-nav-fixed">
@@ -74,17 +76,48 @@
         <!-- end nav -->
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4">
-                    <div>
+                 <div>
                       <center><h1>Selamat Datang Di Halaman Admin</h1></center>
                     </div>
-                    <center><img src="./assets/img/tokokita.jpeg" alt="" class=" rounded-circle" 
-                        style="width:400px;"></center>
+
+                <div class="container-fluid px-4">
+                    <div class="row slideku pt-2">
+                        <div class="h-100">
+                            <div id="carouselExampleIndicators" class="carousel slide h-100" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner h-100">
+                                    <div class="carousel-item active">
+                                        <img src="../assets/img/kerajinan1.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../assets/img/pangandaran.jpg" class=" img-fluid d-block w-100 " alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../assets/img/kerajinan3.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- <center><img src="./assets/img/tokokita.jpeg" alt="" class=" rounded-circle" 
+                        style="width:400px;"></center> -->
                 </div>
             </main>
 
             <!-- Footer -->
-            <footer class="py-4 bg-light mt-auto">
+            <!-- <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Your Website 2021</div>
@@ -95,7 +128,7 @@
                         </div>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
             <!-- endfooter -->
         </div>
     </div>

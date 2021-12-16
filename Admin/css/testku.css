@@ -1,0 +1,17 @@
+@media screen and (max-width: 755px) {
+  .carousel-inner {
+    height: auto;
+  }
+}
+
+@media (min-width: 800px) {
+  .slideku {
+    height: 525px;
+    width: auto;
+    position: relative;
+  }
+}
+
+.carousel-inner > .item > .img {
+  margin: 0 auto;
+}

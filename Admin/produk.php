@@ -64,7 +64,6 @@ $nomor = $halaman_awal+1;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
         crossorigin="anonymous"></script>
 </head>
-
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -179,9 +178,14 @@ $nomor = $halaman_awal+1;
                                 <li class="page-item"><a class="page-link" <?php if($halaman > 1){echo "href= '?halaman = $previous'";}?>>Previous</a></li>
                                 <?php 
                                 for($x=1; $x<=$total_halaman; $x++): 
-                                    ?>    
-                                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"
+                                    ?>
+                                <?php if($x == $total_halaman): ?>   
+                                <li class="page-item"><a class="page-link" style="color: red;" href="?halaman=<?php echo $x ?>"
                                 ><?php echo $x; ?></a></li>
+                                <?php else :?>
+                                      <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"
+                                ><?php echo $x; ?></a></li>
+                                <?php endif;?>
                                 <?php endfor;?>
                                 			
                                 <li class="page-item"><a class="page-link"<?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a></li>
