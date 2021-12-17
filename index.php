@@ -7,7 +7,6 @@ require 'function.php';
         exit;
     }
 
-
 ?>
 
 
@@ -80,6 +79,7 @@ require 'function.php';
                     <button class="btn btn-primary" type="submit">Search</button>
                     <a href="logout.php" class="btn btn-primary ms-2" type="submit">Logout</a>
                 </form> 
+                   
             </div>
         </div>
     </nav>

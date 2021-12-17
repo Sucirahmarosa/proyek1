@@ -174,7 +174,7 @@ $nomor = $halaman_awal+1;
                         </table>
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item"><a class="page-link" <?php if($halaman > 1){echo "href= '?halaman = $previous'";}?>>Previous</a></li>
+                                <li class="page-item"><a class="page-link" <?php echo "href='?halaman=$previous'"?>>Previous</a></li>
                                 <?php 
                                 for($x=1; $x<=$total_halaman; $x++): 
                                     ?>    
