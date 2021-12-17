@@ -166,6 +166,14 @@ function ubah ($data){
     return mysqli_affected_rows($conn);
 }
 
+//Search / cari produk
+function cari($keyword){
+    $query = "SELECT *FROM produk 
+                WHERE nama_barang LIKE '%$keyword%' OR
+                deskripsi_barang LIKE '%$keyword%'";
+    return query($query);
+}
+
 
 
 //FUNCTION TAMBAH DATA PENJUAL
@@ -219,6 +227,16 @@ function hapusPenjual ($id) {
     $query = "DELETE FROM penjual WHERE id = $id";
     mysqli_query($conn, $query) or die (mysqli_error($conn));
     return mysqli_affected_rows($conn);
+}
+
+//Search / cari produk
+function cariPenjual($keyword){
+    $query = "SELECT *FROM penjual 
+                WHERE nama_penjual LIKE '%$keyword%' OR
+                no_penjual LIKE '%$keyword%' OR
+                alamat_penjual LIKE '%$keyword%' OR
+                deskripsi_penjual LIKE '%$keyword%'";
+    return query($query);
 }
 
 ?>

@@ -1,9 +1,6 @@
 <?php
 require '../function.php';
 
-
-
-
 //Tambah Data
 if(isset ($_POST["submit"])){
 
@@ -34,7 +31,7 @@ if(isset($_POST["edit"])){
     }
 
 //pagination
-$batas = 1;
+$batas = 3;
 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
 $halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;	
 $previous = $halaman - 1;
@@ -47,6 +44,11 @@ $total_halaman = ceil($jumlah_data / $batas);
 $produk = query("SELECT *FROM produk LIMIT $halaman_awal, $batas");
 $nomor = $halaman_awal+1;
 
+
+//cari data
+if(isset ($_POST["cari"])){
+    $produk = cari($_POST["keyword"]);
+}
 
 ?>
 <!DOCTYPE html>
@@ -107,12 +109,12 @@ $nomor = $halaman_awal+1;
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Tambah Data
                     </button>
-                      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 float-end">
+                      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 float-end" action="" method="POST"> 
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                                aria-describedby="btnNavbarSearch" />
-                            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                                    class="fas fa-search"></i></button>
+                            <input class="form-control" type="text" placeholder="Cari" aria-label="Cari" autocomplete="off" name="keyword"
+                                aria-describedby="btnNavbarSearch">
+                            <button class="btn btn-primary" type="submit" name="cari"><i
+                                    class="fas fa-search"></i></button>  
                         </div>
                       </form>
                         <table class="table table-dark table-bordered mt-2">

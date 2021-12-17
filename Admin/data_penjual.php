@@ -47,6 +47,10 @@ $total_halaman = ceil($jumlah_data / $batas);
 $penjual = query("SELECT *FROM penjual LIMIT $halaman_awal, $batas");
 $nomor = $halaman_awal+1;
 
+//cari data
+if(isset ($_POST["search"])){
+    $penjual = cariPenjual($_POST["keyword"]);
+}
 
 ?>
 <!DOCTYPE html>
@@ -131,6 +135,14 @@ $nomor = $halaman_awal+1;
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Tambah Data
                     </button>
+                     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 float-end" action="" method="POST"> 
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Cari" aria-label="Cari" autocomplete="off" name="keyword"
+                                aria-describedby="btnNavbarSearch">
+                            <button class="btn btn-primary" type="submit" name="search"><i
+                                    class="fas fa-search"></i></button>  
+                        </div>
+                      </form>
                         <table class="table table-dark table-bordered mt-2">
                             <thead>
                                 <tr>
