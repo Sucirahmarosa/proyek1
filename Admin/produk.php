@@ -34,7 +34,7 @@ if(isset($_POST["edit"])){
     }
 
 //pagination
-$batas = 2;
+$batas = 1;
 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
 $halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;	
 $previous = $halaman - 1;
@@ -179,7 +179,7 @@ $nomor = $halaman_awal+1;
                                 <?php 
                                 for($x=1; $x<=$total_halaman; $x++): 
                                     ?>
-                                <?php if($x == $total_halaman): ?>   
+                                <?php if($x == $halaman_awal + 1): ?>   
                                 <li class="page-item"><a class="page-link" style="color: red;" href="?halaman=<?php echo $x ?>"
                                 ><?php echo $x; ?></a></li>
                                 <?php else :?>
