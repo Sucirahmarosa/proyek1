@@ -29,7 +29,7 @@ require 'function.php';
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <!-- Css -->
-    <link rel="stylesheet" href="css/stykesku.css">
+    <link rel="stylesheet" href="css/tess.css">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/282f37c3b4.js" crossorigin="anonymous"></script>
 </head>
@@ -132,7 +132,7 @@ require 'function.php';
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h2 class="section-tittle text-center fw-bold pt-5">Profil</h2>
+                        <h2 class="section-tittle text-center fw-bold pt-5 profil">Profil</h2>
                     </div>
                         <div class= "col-sm-6">
                             <p>Halo selamat datang di TokoKita, toko yang menawarkan banyak produk e,emtronik dari yang baru sampai

@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
         crossorigin="anonymous"></script>
     <!-- Css -->
-    <link rel="stylesheet" href="css/testku.css">
+    <link rel="stylesheet" href="css/gayaku.css">
 </head>
 
 <body class="sb-nav-fixed">
@@ -24,6 +24,7 @@
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
     </nav>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -54,7 +55,7 @@
             <main>
                  <div>
                       <center><h1>Selamat Datang Di Halaman Admin</h1></center>
-                    </div>
+                 </div>
 
                 <div class="container-fluid px-4">
                     <div class="row slideku pt-2">
