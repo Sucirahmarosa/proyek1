@@ -75,6 +75,7 @@ $produk = query("SELECT *FROM produk")
                             <td><img src="Admin/img/<?php echo $pdk["foto_barang"]; ?>" width="200px"></td>   
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $pdk['nama_barang'];?></h5>
+                                <h5 class="card-harga">RP. <?php echo $pdk['harga_barang'];?></h5>
                                 <p class="car-text"><?php echo substr($pdk['deskripsi_barang'], 0, 40);?></p>
                             </div>
                             <div class="card-body">
