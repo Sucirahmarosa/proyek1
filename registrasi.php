@@ -30,7 +30,7 @@ if( isset($_POST["Register"])){
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <!-- Css -->
-    <link rel="stylesheet" href="css/stylesku.css">
+    <link rel="stylesheet" href="css/tess.css">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/282f37c3b4.js" crossorigin="anonymous"></script>
 </head>

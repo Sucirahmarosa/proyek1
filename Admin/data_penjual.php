@@ -35,17 +35,15 @@ if(isset($_POST["edit"])){
 
 //pagination
 $batas = 1;
-$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-$halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;	
+$jumlahData = count(query("SELECT *FROM penjual"));
+$jumlahHalaman = ceil($jumlahData / $batas);
+$halaman = (isset($_GET['halaman'])) ? $_GET['halaman'] : 1;
+$awaldata =($batas * $halaman) - $batas;	
 $previous = $halaman - 1;
 $next = $halaman + 1;
 
-$result = mysqli_query($conn,"SELECT *FROM penjual");
-$jumlah_data = mysqli_num_rows($result);
-$total_halaman = ceil($jumlah_data / $batas);
+$penjual = query("SELECT *FROM penjual LIMIT $awaldata, $batas"); 
 
-$penjual = query("SELECT *FROM penjual LIMIT $halaman_awal, $batas");
-$nomor = $halaman_awal+1;
 
 //cari data
 if(isset ($_POST["search"])){
@@ -82,15 +80,15 @@ if(isset ($_POST["search"])){
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <a class="nav-link" href="home.php?halaman=home">
+                        <a class="nav-link" href="home.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="produk.php?halaman=produk">
+                        <a class="nav-link" href="produk.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Produk
                         </a>
-                        <a class="nav-link" href="data_penjual.php?=penjual">
+                        <a class="nav-link" href="data_penjual.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Penjual
                         </a>
@@ -161,21 +159,24 @@ if(isset ($_POST["search"])){
                             </tbody>
                         </table>
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
+                           <ul class="pagination justify-content-center">
+                                <?php if($halaman > 1) : ?>
                                 <li class="page-item"><a class="page-link" <?php echo "href='?halaman=$previous'"?>>Previous</a></li>
+                                <?php endif;?>
                                 <?php 
-                                for($x=1; $x<=$total_halaman; $x++): 
-                                    ?>    
-                                <?php if($x == $halaman_awal + 1): ?>   
-                                    <li class="page-item"><a class="page-link" style="color: red;" href="?halaman=<?php echo $x ?>"
-                                    ><?php echo $x; ?></a></li>
+                                for($x=1; $x<=$jumlahHalaman; $x++): 
+                                    ?>
+                                <?php if($x == $halaman): ?>   
+                                <li class="page-item"><a class="page-link" style="color: red;" href="?halaman=<?php echo $x ?>"
+                                ><?php echo $x; ?></a></li>
                                 <?php else :?>
-                                    <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"
-                                    ><?php echo $x; ?></a></li>
+                                      <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"
+                                ><?php echo $x; ?></a></li>
                                 <?php endif;?>
                                 <?php endfor;?>
-                                			
-                                <li class="page-item"><a class="page-link"<?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a></li>
+                                <?php if($halaman < $jumlahHalaman ) :?>
+                                <li class="page-item"><a class="page-link"<?php if($halaman < $jumlahHalaman) { echo "href='?halaman=$next'"; } ?>>Next</a></li>
+                                <?php endif;?>
                             </ul>
                         </nav>
                 </div>
