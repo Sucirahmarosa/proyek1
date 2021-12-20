@@ -1,14 +1,19 @@
 <?php
 session_start();
-require 'function.php';
+require_once 'function.php';
 
     if( !isset($_SESSION["login"])){
         header("Location: login.php");
         exit;
     }
 
-$produk = query("SELECT *FROM produk")
+$produk = query("SELECT *FROM produk");
+
+if(isset ($_POST["search"])){
+    $produk = cari($_POST["keyword"]);
+}
 ?>
+
 
 
 
@@ -63,10 +68,12 @@ $produk = query("SELECT *FROM produk")
         <section class="produk">
             <div class="container">
                 <div class="row">
+                    <form action="" method="POST">
                     <div class="input-group mb-3 pt-4">
                         <input class="form-control" placeholder="Cari Produk" type="search" name="keyword">
-                        <button class="btn btn-primary" type="submit" name="cari" id="button-addon2"> Cari </button>
+                        <button class="btn btn-primary" type="submit" name="search" id="button-addon2"> Cari </button>
                     </div>
+                    </form>
                         <div class="col-sm-12 mb-3">
                             <h2 class="section-tittle text-center fw-bold">PRODUK</h2>
                         </div>
