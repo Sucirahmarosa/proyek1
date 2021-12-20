@@ -52,8 +52,6 @@ $produk = query("SELECT *FROM produk")
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-primary" type="submit">Search</button>
                     <a href="logout.php" class="btn btn-primary ms-2" type="submit">Logout</a>
                 </form> 
                    
@@ -61,29 +59,36 @@ $produk = query("SELECT *FROM produk")
         </div>
     </nav>
     <!-- Section-->
-    <main>
+      <main>
         <section class="produk">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="section-tittle text-center fw-bold pt-5">PRODUK</h2>
+                    <div class="input-group mb-3 pt-4">
+                        <input class="form-control" placeholder="Cari Produk" type="search" name="keyword">
+                        <button class="btn btn-primary" type="submit" name="cari" id="button-addon2"> Cari </button>
                     </div>
-                    <?php foreach ($produk as $pdk):?>
-                    <div class="card" style="width: 18rem;">
-                        <td><img src="Admin/img/<?php echo $pdk["foto_barang"]; ?>" width="130px"></td>   
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $pdk['nama_barang']?></h5>
+                        <div class="col-sm-12 mb-3">
+                            <h2 class="section-tittle text-center fw-bold">PRODUK</h2>
                         </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                        <?php foreach ($produk as $pdk):?>
+                        <div class="card me-5 pt-5 border-4 mb-3" style="width: 20rem;">
+                            <td><img src="Admin/img/<?php echo $pdk["foto_barang"]; ?>" width="200px"></td>   
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $pdk['nama_barang'];?></h5>
+                                <p class="car-text"><?php echo substr($pdk['deskripsi_barang'], 0, 40);?></p>
+                            </div>
+                            <div class="card-body">
+                                <a href="#" class="btn btn-primary">Lihat Detail</a>
+                                <a href="#" class="btn btn-success">Beli </a>
+                            </div>
                         </div>
-                    </div>
-                    <?php endforeach;?>
+                        <?php endforeach;?>
                 </div>
             </div>
         </section>
     </main>
+    <br>
+    <br>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
