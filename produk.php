@@ -57,7 +57,7 @@ if(isset ($_POST["search"])){
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <a href="logout.php" class="btn btn-primary ms-2" type="submit">Logout</a>
+                    <a href="logout.php" class="btn btn-danger ms-2" type="submit">Logout</a>
                 </form> 
                    
             </div>
@@ -70,7 +70,7 @@ if(isset ($_POST["search"])){
                 <div class="row">
                     <form action="" method="POST">
                     <div class="input-group mb-3 pt-4">
-                        <input class="form-control" placeholder="Cari Produk" type="search" name="keyword">
+                        <input class="form-control" placeholder="Cari Produk" type="search" name="keyword" autocomplete="off">
                         <button class="btn btn-primary" type="submit" name="search" id="button-addon2"> Cari </button>
                     </div>
                     </form>

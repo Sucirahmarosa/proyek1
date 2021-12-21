@@ -52,7 +52,7 @@ require 'function.php';
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <a href="logout.php" class="btn btn-primary ms-2" type="submit">Logout</a>
+                    <a href="logout.php" class="btn btn-danger ms-2" type="submit">Logout</a>
                 </form> 
                    
             </div>
