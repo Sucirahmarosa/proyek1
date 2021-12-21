@@ -86,14 +86,51 @@ if(isset ($_POST["search"])){
                                 <p class="car-text"><?php echo substr($pdk['deskripsi_barang'], 0, 40);?></p>
                             </div>
                             <div class="card-body">
-                                <a href="#" class="btn btn-primary">Lihat Detail</a>
-                                <a href="#" class="btn btn-success">Beli </a>
+                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detail<?php echo $pdk['id_barang'];?>">Lihat Detail</a>
+                                <a href="https://api.whatsapp.com/send?phone=+6281394671261 &text= hai saya tertarik membeli produk <?php echo $pdk['nama_barang'];?>" class="btn btn-success">Beli </a>
                             </div>
                         </div>
                         <?php endforeach;?>
                 </div>
             </div>
         </section>
+    
+        <!-- Modal tambah data -->
+        <?php foreach ($produk as $pdk):?>
+                    <div class="modal fade" id="detail<?php echo $pdk['id_barang'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Detail Barang</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                             <input type="hidden" value="<?php echo $pdk['id'];?>">
+                                        </div>
+                                        <div class="form-group">
+                                             <center><img src="Admin/img/<?php echo $pdk['foto_barang'];?>" width="250px"></center>
+                                        </div>
+                                        <div class="form-group pt-2">
+                                            <p style="font-size: 15px;">Nama Produk : <?php echo $pdk['nama_barang'];?></p>
+                                        </div>
+                                        <div class="form-group">    
+                                            <p style="font-size: 15px;">Harga Produk : Rp. <?php echo $pdk['harga_barang'];?></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p style="font-size: 15px;">Deskripsi Produk : <br> <?php echo $pdk['deskripsi_barang'];?></h5>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-cancel btn-danger" data-bs-dismiss="modal">Batal</button>
+                                        <a href="https://api.whatsapp.com/send?phone=+6281394671261 &text= hai saya tertarik membeli produk <?php echo $pdk['nama_barang'];?>" class="btn btn-cancel btn-success">Beli</a>
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+    <?php endforeach;?>
+                 <!-- end modal -->
     </main>
     <br>
     <br>

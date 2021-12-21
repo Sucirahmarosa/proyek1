@@ -145,7 +145,7 @@ if(isset ($_POST["search"])){
                                     <td>
                                         <?php echo $pjl["no_penjual"]; ?>
                                     </td>
-                                    <td>
+                                    <td width="400px">
                                         <?php echo $pjl["deskripsi_penjual"]; ?>
                                     </td>
                                     <td>

@@ -146,7 +146,7 @@ if(isset ($_POST["cari"])){
                                         <?php echo $pdk["jumlah_barang"]; ?>
                                     </td>
                                     <td><img src="img/<?php echo $pdk["foto_barang"]; ?>" width="130px"></td>
-                                    <td>
+                                    <td width="400px">
                                         <?php echo $pdk["deskripsi_barang"]; ?>
                                     </td>
                                     <td>
