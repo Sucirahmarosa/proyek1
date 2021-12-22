@@ -51,24 +51,8 @@ require 'function.php';
                         <a href="produk.php" class="active nav-link">Produk</a>
                     </li>
                 </ul>
-                <div class="nav-icon">
-                    <a href="daftar-order.php">
-                        <i class="fas fa-list-ul nav-icon me-2"></i>
-                        <span class="badge nav-badges rounded-pill bg-danger"></span>
-                        <span class="visually-hidden">unseen order</span>
-                    </a>
-                </div>
-                <div class="nav-icon">
-                    <a href="cart.php">
-                        <i class="fas fa-shopping-cart nav-icon me-5"></i>
-                        <span class="badge bg-danger me-1 rounded-pill"></span>
-                        <span class="visually-hidden">unseen cart</span>
-                    </a>
-                </div>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                    <a href="logout.php" class="btn btn-primary ms-2" type="submit">Logout</a>
+                    <a href="logout.php" class="btn btn-danger ms-2" type="submit">Logout</a>
                 </form> 
                    
             </div>
